@@ -38,6 +38,7 @@ This Python script is designed to send a predefined message to different channel
 Run the script using the following command:
 ```sh
 python main.py
+```
 
 ## Configuration
 The script uses a list of channels defined within the script to send messages. You can modify this list to add or remove channels as needed. The message content is also defined within the script and can be customized to fit your needs.
