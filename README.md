@@ -62,6 +62,27 @@ Looking for an epic Minecraft server experience? Join Hyperblock today!
 
 """
 ```
+# How to Get Your Discord Token From the Developer Console
+
+- Open the developer console with `F12` or `ctrl+shift+i`.
+- Go to the network tab
+- Filter by Fetch/XHR
+- Choose a request that isn't an error
+- Under the `request headers` -> `authorization` section, there will be your Discord token. Copy and paste it from there.
+
+![image](https://gist.github.com/assets/17340496/ca1be329-1ef8-4b6f-ab96-dd9324d511db)
+
+# How to Get Channel url From the Developer Console
+
+-- Open the developer console with `F12` or `ctrl+shift+i`.
+- Go to the network tab
+- Filter by Fetch/XHR
+- Choose a request that isn't an error
+- - Under the `request headers` -> `Request url`
+- point to note a message has to be sent to the channel to get the request as well as token
+
+![image](https://i.imgur.com/jMgKyST.png)
+
 
 ## Discord's Terms of Service
 By using this script, you agree to comply with Discord's Terms of Service and Discord's Developer Terms of Service. This includes but is not limited to:
