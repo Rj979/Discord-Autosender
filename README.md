@@ -45,9 +45,7 @@ The script uses a list of channels defined within the script to send messages. Y
 
 ## Example Configuration
 Here is an example of how the channels and message content are defined in the script:
-
-python
-Copy code
+```
 channels = [
     {"name": "channel1", "url": "https://discord.com/api/v9/channels/123456789012345678/messages"},
     {"name": "channel2", "url": "https://discord.com/api/v9/channels/987654321098765432/messages"},
@@ -62,8 +60,8 @@ Looking for an epic Minecraft server experience? Join Hyperblock today!
 :globe_with_meridians: Website: [hyperblock.fun](https://hyperblock.fun/)
 :video_game: Discord: [HyperBlock SMP](https://discord.gg/7DJgrFrNPw)
 
-...
 """
+```
 
 ## Discord's Terms of Service
 By using this script, you agree to comply with Discord's Terms of Service and Discord's Developer Terms of Service. This includes but is not limited to:
