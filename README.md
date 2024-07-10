@@ -70,7 +70,7 @@ Looking for an epic Minecraft server experience? Join Hyperblock today!
 - Choose a request that isn't an error
 - Under the `request headers` -> `authorization` section, there will be your Discord token. Copy and paste it from there.
 
-![image](https://gist.github.com/assets/17340496/ca1be329-1ef8-4b6f-ab96-dd9324d511db)
+![image](https://i.imgur.com/O2F5wzs.png)
 
 # How to Get Channel url From the Developer Console
 
