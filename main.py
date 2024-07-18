@@ -1,23 +1,24 @@
 import requests
 import time
-from datetime import datetime
+import random
+
+list1 = [1, 2, 3, 4, 5, 6]
 
 # Define your channels, URLs, and cooldowns
 channels = [
-    {"name": "channel1", "url": "https://discord.com/api/v9/channels/858734007729258526/messages"},
-    {"name": "channel2", "url": "https://discord.com/api/v9/channels/546371699076104192/messages"},
-    
-    # Add more channels as needed
+    {"name": "channel1", "url": "https://discord.com/api/v9/channels/562296002262859776/messages"},
+# add channels as u need
 ]
+
 # Define the message content (same for all channels)
-message_content = # if the content is single line use quotes (" ")
-                  # if the content is multi line use docstring (""" """)
+message_content ="""your message 
+"""
 
 # Function to send a message to a channel
 def send_message(url, payload, headers):
     try:
         res = requests.post(url, json=payload, headers=headers)
-        if res.status_code == 200:
+        if res.status_code == 200 or res.status_code == 204:
             print(f"Message sent successfully to {url}")
             return True
         elif res.status_code == 429:
@@ -27,8 +28,11 @@ def send_message(url, payload, headers):
                 return int(retry_after) + 1  # Add 1 second to be safe
             else:
                 print(f"Rate limited. No Retry-After header provided. Status code: {res.status_code}")
+        elif res.status_code == 403:
+            print(f"Forbidden: You don't have permission to send messages to this channel. Status code: {res.status_code}")
         else:
             print(f"Failed to send message to {url}. Status code: {res.status_code}")
+            print(f"Response: {res.text}")
     except requests.exceptions.RequestException as e:
         print(f"Request error: {e}")
     return False
@@ -41,16 +45,18 @@ def main():
             url = channel["url"]
 
             payload = {"content": message_content}
-            headers = {"Authorization": "Enter-token-here"}  # Replace with your actual token
+            headers = {"Authorization": "add ur token here"}  # Replace with your actual user token
 
             retry_after = send_message(url, payload, headers)
             if retry_after:
                 print(f"Channel {channel_name} is rate-limited. Will retry in next cycle.")
 
-            time.sleep(1)  # Add a small delay to avoid hitting rate limits
+            time.sleep(2)  # Add a small delay to avoid hitting rate limits
 
-        print("Waiting for 30 minutes before the next cycle...")
-        time.sleep(30 * 60)  # Wait for 30 minutes before sending messages again
+        n=random.choice(list1)
+        n=int(n)
+        print("Waiting for 30 minutes before the next cycle... and offset is",n)
+        time.sleep((30 * 60)+n)  # Wait for 30 minutes before sending messages again
 
 if __name__ == "__main__":
     main()
