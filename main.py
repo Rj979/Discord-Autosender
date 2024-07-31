@@ -1,8 +1,7 @@
 import requests
 import time
 import random
-
-list1 = [1, 2, 3, 4, 5, 6]
+import os
 
 # Define your channels, URLs, and cooldowns
 channels = [
@@ -36,12 +35,6 @@ channels = [
     {"name": "channel28", "url": "https://discord.com/api/v9/channels/549951891522453542/messages"},
     {"name": "channel29", "url": "https://discord.com/api/v9/channels/566313755278049280/messages"},
     {"name": "channel30", "url": "https://discord.com/api/v9/channels/566335596243714050/messages"},
-    {"name": "channel31", "url": "https://discord.com/api/v9/channels/704046754332540948/messages"},
-    {"name": "channel32", "url": "https://discord.com/api/v9/channels/1253839284897841204/messages"},
-    {"name": "channel33", "url": "https://discord.com/api/v9/channels/1254554066420371557/messages"},
-    {"name": "channel34", "url": "https://discord.com/api/v9/channels/1254554119587237968/messages"},
-    {"name": "channel35", "url": "https://discord.com/api/v9/channels/1254554178412482580/messages"},
-    {"name": "channel36", "url": "https://discord.com/api/v9/channels/1235867542015316059/messages"},
     {"name": "channel37", "url": "https://discord.com/api/v9/channels/1230157505070633001/messages"},
     {"name": "channel38", "url": "https://discord.com/api/v9/channels/1232394495136501780/messages"},
     {"name": "channel39", "url": "https://discord.com/api/v9/channels/1224758908233715722/messages"},
@@ -128,7 +121,7 @@ def main():
             url = channel["url"]
 
             payload = {"content": message_content}
-            headers = {"Authorization": ""}  # Replace with your actual user token
+            headers = {"Authorization": os.getenv('DISCORD_TOKEN')}  # Ensure your token is stored in environment variable
 
             retry_after = send_message(url, payload, headers)
             if retry_after:
@@ -136,10 +129,10 @@ def main():
 
             time.sleep(2)  # Add a small delay to avoid hitting rate limits
 
-        n=random.choice(list1)
-        n=int(n)
-        print("Waiting for 30 minutes before the next cycle... and offset is",n)
-        time.sleep((30 * 60)+n)  # Wait for 30 minutes before sending messages again
+        n = random.choice(list1)
+        n = int(n)
+        print("Waiting for 30 minutes before the next cycle... and offset is", n)
+        time.sleep((30 * 60) + n)  # Wait for 30 minutes before sending messages again
 
 if __name__ == "__main__":
     main()
